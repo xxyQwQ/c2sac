@@ -1,0 +1,6 @@
+name: bc
+
+parameter:
+  num_layers: 3
+  hidden_dims: 1024
+  policy_lr: 1e-4

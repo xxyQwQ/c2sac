@@ -1,0 +1,9 @@
+name: gail
+
+parameter:
+  num_layers: 3
+  hidden_dims: 1024
+  policy_lr: 1e-4
+  discriminator_lr: 3e-4
+  bc_weight: 1.0
+  adv_weight: 1.0
