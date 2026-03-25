@@ -1,5 +1,5 @@
-<h1 align="center">Cross-task Conservative Soft Actor-Critic (C2SAC)</h1>
-<p align="center">Final project refactor for AIST5030 Generative Artificial Intelligence, Spring 2026, CUHK</p>
+<h1 align="center">Cross-Task Conservative Soft Actor-Critic (C2SAC)</h1>
+<p align="center">Project of IERG5350 Reinforcement Learning, Spring 2026, CUHK</p>
 
 This project studies offline reinforcement learning on multiple walker subtasks. The refactor unifies the original training scripts into a single configurable trainer, updates the project naming to **C2SAC**, uses the two walker subtasks `walk` and `run`, and adds a broader baseline suite for course experiments.
 
@@ -32,28 +32,16 @@ The refactored project supports:
 - `cql`: conservative Q-learning
 - `c2sac`: cross-task conservative soft actor-critic
 
-## Training
+## Experiments
 
 Everything now runs through the shared trainer with the shared cross-task interface:
 
 ```bash
-python trainer.py agent=bc setting.dataset_name=medium
-python trainer.py agent=gail setting.dataset_name=replay
-python trainer.py agent=bcq setting.dataset_name=medium
-python trainer.py agent=cql setting.dataset_name=replay
-python trainer.py agent=c2sac setting.dataset_name=medium
+python trainer.py agent={agent_name} setting.dataset_name={dataset_name}
 ```
 
-## Logging
-
-Training logs are written to each checkpoint directory. Optional Weights & Biases logging can be enabled with:
+You can directly run all the experiments with the provided script:
 
 ```bash
-python trainer.py agent=cql logging.use_wandb=true
+python scripts/experiment.py
 ```
-
-The default W&B entity is `VisualCamp`. You can still override it at launch time with `logging.entity=...` if needed.
-
-## Experiments
-
-Batch experiment commands live in [`scripts/experiment.py`](./scripts/experiment.py). Checkpoints are stored under `checkpoints/`, and the notebook in [`scripts/plot.ipynb`](./scripts/plot.ipynb) can still be used for result visualization after adapting plots to the new agent names.
