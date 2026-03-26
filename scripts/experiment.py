@@ -8,7 +8,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 MAX_WORKERS = 3
 # AGENTS = ("bc", "gail", "bcq", "cql", "c2sac")
-AGENTS = ("c2sac",)
+AGENTS = ("bc", "cql")
 DATASETS = ("medium", "replay")
 SEEDS = range(3)
 ROOT_DIR = Path(__file__).resolve().parent.parent

@@ -5,11 +5,28 @@ This project studies offline reinforcement learning on multiple walker subtasks.
 
 ## Requirements
 
-Create a Python environment for this project with Python 3.10 and the pinned dependencies in [`requirements.txt`](./requirements.txt). The current setup uses a newer PyTorch build with CUDA 12.8 while keeping the rest of the compatibility-sensitive RL stack aligned with this repo.
+Create a conda environment:
 
 ```bash
 conda create -n c2sac python=3.10
 conda activate c2sac
+```
+
+Install a compatible version of PyTorch:
+
+```bash
+pip install torch torchvision
+```
+
+Reinstall some tools to avoid conflicts:
+
+```bash
+pip install setuptools==65.5.0 pip==21.0 wheel==0.38.0
+```
+
+Install the required packages:
+
+```bash
 pip install -r requirements.txt
 ```
 
