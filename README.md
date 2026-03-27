@@ -1,7 +1,7 @@
 <h1 align="center">Cross-Task Conservative Soft Actor-Critic (C2SAC)</h1>
 <p align="center">Project of IERG5350 Reinforcement Learning, Spring 2026, CUHK</p>
 
-This project studies offline reinforcement learning on multiple walker subtasks. The refactor unifies the original training scripts into a single configurable trainer, updates the project naming to **C2SAC**, uses the two walker subtasks `walk` and `run`, and adds a broader baseline suite for course experiments.
+This project focuses on the challenge of multi-task offline reinforcement learning. We propose a novel method named **C2SAC** inspired by conservative Q-learning (CQL) and conservative data sharing (CDS). We evaluate C2SAC in the walker environment, jointly learning to walk and run from offline trajectories. We compare C2SAC with multiple baselines, including behavioral cloning (BC), generative adversarial imitation learning (GAIL), batch-constrained Q-learning (BCQ), and conservative Q-learning (CQL). The results demonstrate that C2SAC effectively leverages cross-task data to achieve superior performance in both tasks.
 
 ## Requirements
 
@@ -21,7 +21,8 @@ pip install torch torchvision
 Reinstall some tools to avoid conflicts:
 
 ```bash
-pip install setuptools==65.5.0 pip==21.0 wheel==0.38.0
+pip install setuptools==65.5.0 pip==21.0
+pip install wheel==0.38.0
 ```
 
 Install the required packages:
@@ -32,29 +33,20 @@ pip install -r requirements.txt
 
 ## Datasets
 
-The trainer expects datasets under [`datasets`](./datasets) with the following names:
-
-- `walker-walk-medium`
-- `walker-walk-replay`
-- `walker-run-medium`
-- `walker-run-replay`
+The datasets are collected from TD-3 agents trained on the `walker-walk` and `walker-run` tasks, containing two subsets of trajectories. The `medium` subset is sampled from a policy with medium performance and the `replay` subset is sampled from the replay buffer during training.
 
 ## Agents
 
-The refactored project supports:
-
-- `bc`: behavior cloning
-- `gail`: generative adversarial imitation learning
-- `bcq`: batch-constrained Q-learning
-- `cql`: conservative Q-learning
-- `c2sac`: cross-task conservative soft actor-critic
+There are five agents implemented in this project, including behavioral cloning (BC), generative adversarial imitation learning (GAIL), batch-constrained Q-learning (BCQ), conservative Q-learning (CQL), and our proposed method C2SAC.
 
 ## Experiments
 
-Everything now runs through the shared trainer with the shared cross-task interface:
+Run the following command to train a specific agent on a specific dataset:
 
 ```bash
 python trainer.py agent={agent_name} setting.dataset_name={dataset_name}
+# agent_name: bc, gail, bcq, cql, c2sac
+# dataset_name: medium, replay
 ```
 
 You can directly run all the experiments with the provided script:
