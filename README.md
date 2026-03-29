@@ -1,4 +1,4 @@
-<h1 align="center">Cross-Task Conservative Soft Actor-Critic (C2SAC)</h1>
+<h1 align="center">C2SAC: Cross-Task Conservative Soft Actor-Critic</h1>
 <p align="center">Project of IERG5350 Reinforcement Learning, Spring 2026, CUHK</p>
 
 ![overall_framework](assets/overall_framework.png)
